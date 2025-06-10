@@ -17,7 +17,7 @@ import { WalletRepository } from 'src/domain/repositories/wallet.repository';
 import { WalletRepositoryImpl } from 'src/infrastructure/repositories/wallet.repository.impl';
 
 // сервис логов
-import { LogsModule } from 'src/logs/logs.module';
+import { LogsModule } from 'src/interfaces/logs/logs.module';
 import { UserRepository } from 'src/domain/repositories/user.repository';
 import { UserRepositoryImpl } from 'src/infrastructure/repositories/user.repository.impl';
 import { User } from 'src/infrastructure/entities/user.orm-entity';

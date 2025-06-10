@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './interfaces/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { WalletsModule } from './wallets/wallets.module';
+import { AuthModule } from './interfaces/auth/auth.module';
+import { WalletsModule } from './interfaces/wallets/wallets.module';
 import { ConfigModule } from '@nestjs/config';
-import { TransactionsModule } from './transactions/transactions.module';
-import { LogsModule } from './logs/logs.module';
+import { TransactionsModule } from './interfaces/transactions/transactions.module';
+import { LogsModule } from './interfaces/logs/logs.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
-import { AdminModule } from './admin/admin.module';
+import { AdminModule } from './interfaces/admin/admin.module';
 
 @Module({
   imports: [

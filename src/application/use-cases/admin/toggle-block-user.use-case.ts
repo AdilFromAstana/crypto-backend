@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserRepository } from 'src/domain/repositories/user.repository';
-import { LogsService } from 'src/logs/logs.service';
+import { LogsService } from 'src/interfaces/logs/logs.service';
 
 @Injectable()
 export class ToggleBlockUserUseCase {

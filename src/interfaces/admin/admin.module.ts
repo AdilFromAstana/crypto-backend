@@ -26,7 +26,7 @@ import { TransactionRepository } from 'src/domain/repositories/transaction.repos
 import { TransactionRepositoryImpl } from '../infrastructure/repositories/transaction.repository.impl';
 
 // Логи
-import { LogsModule } from 'src/logs/logs.module';
+import { LogsModule } from 'src/interfaces/logs/logs.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User, Wallet, Transaction]), LogsModule],

@@ -8,7 +8,7 @@ import { randomBytes } from 'crypto';
 import { TransactionEntity } from 'src/domain/entities/transaction.entity';
 import { TransactionRepository } from 'src/domain/repositories/transaction.repository';
 import { WalletRepository } from 'src/domain/repositories/wallet.repository';
-import { LogsService } from 'src/logs/logs.service';
+import { LogsService } from 'src/interfaces/logs/logs.service';
 
 @Injectable()
 export class SendEthUseCase {
