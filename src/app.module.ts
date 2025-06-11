@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './interfaces/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './interfaces/auth/auth.module';
 import { WalletsModule } from './interfaces/wallets/wallets.module';
 import { ConfigModule } from '@nestjs/config';
 import { TransactionsModule } from './interfaces/transactions/transactions.module';
@@ -11,6 +10,8 @@ import { LogsModule } from './interfaces/logs/logs.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AdminModule } from './interfaces/admin/admin.module';
+import { AuthModule } from './interfaces/auth/auth.module';
+import { TokenModule } from './interfaces/token/token.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { AdminModule } from './interfaces/admin/admin.module';
     TransactionsModule,
     LogsModule,
     AdminModule,
+    TokenModule,
   ],
   controllers: [AppController],
   providers: [AppService],

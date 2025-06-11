@@ -5,4 +5,8 @@ export abstract class WalletRepository {
   abstract findByAddress(address: string): Promise<WalletEntity | null>;
   abstract save(wallet: WalletEntity): Promise<void>;
   abstract findByUserId(userId: string): Promise<WalletEntity[]>;
+  abstract findAllByUserAndToken(
+    userId: string,
+    tokenSymbol: string,
+  ): Promise<WalletEntity[]>;
 }

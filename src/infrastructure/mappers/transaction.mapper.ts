@@ -1,32 +1,46 @@
 import { Transaction } from '../entities/transaction.orm-entity';
-import { TransactionEntity } from '../../domain/entities/transaction.entity';
+import {
+  TransactionEntity,
+  TxType,
+  TxStatus,
+} from '../../domain/entities/transaction.entity';
 
 export class TransactionMapper {
   static toDomain(record: Transaction): TransactionEntity {
     return new TransactionEntity(
       record.id,
       Number(record.amount),
-      record.status,
-      record.txHash,
-      record.toWalletId,
+      record.status as TxStatus,
       record.fromWalletId,
-      record.toAddress,
-      record.fromAddress,
-      record.createdAt,
+      record.toWalletId,
+      record.fromAddress ?? null,
+      record.toAddress ?? null,
+      new Date(record.createdAt),
+      record.type as TxType,
+      record.fromToken,
+      record.toToken,
+      record.exchangeRate ?? undefined,
+      record.txHash ?? undefined,
+      record.note ?? undefined,
     );
   }
 
   static toOrm(entity: TransactionEntity): Partial<Transaction> {
     return {
       id: entity.id,
-      fromWalletId: entity.fromWalletId,
-      toWalletId: entity.toWalletId,
-      toAddress: entity.toAddress,
-      fromAddress: entity.fromAddress,
       amount: entity.amount,
       status: entity.status,
-      txHash: entity.txHash,
+      fromWalletId: entity.fromWalletId,
+      toWalletId: entity.toWalletId,
+      fromAddress: entity.fromAddress,
+      toAddress: entity.toAddress,
       createdAt: entity.createdAt,
+      type: entity.type,
+      fromToken: entity.fromToken,
+      toToken: entity.toToken,
+      exchangeRate: entity.exchangeRate,
+      txHash: entity.txHash,
+      note: entity.note,
     };
   }
 }

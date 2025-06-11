@@ -29,4 +29,23 @@ export abstract class TransactionRepository {
     limit: number;
   }>;
   abstract countByUserId(userId: string): Promise<number>;
+
+  // ✅ Новый метод: сумма за сегодня
+  abstract getTotalSentPerDay(
+    userId: string,
+    tokenSymbol: string,
+  ): Promise<number>;
+
+  // ✅ Новый метод: сумма за месяц
+  abstract getTotalSentPerMonth(
+    userId: string,
+    tokenSymbol: string,
+  ): Promise<number>;
+
+  // ✅ Новый метод: сумма одному получателю за сегодня
+  abstract getTotalToRecipientToday(
+    senderId: string,
+    recipientId: string,
+    tokenSymbol: string,
+  ): Promise<number>;
 }

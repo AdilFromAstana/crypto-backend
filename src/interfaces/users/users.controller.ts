@@ -1,5 +1,5 @@
 import { Controller, Get, UseGuards, Req } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { GetUserByIdUseCase } from 'src/application/use-cases/users/get-user-by-id.use-case';
 import { GetAllUsersUseCase } from 'src/application/use-cases/users/get-all-users.use-case';

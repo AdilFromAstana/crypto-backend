@@ -6,11 +6,10 @@ import { LogEvent, LogEventSchema } from './schemas/log-event.schema';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: LogEvent.name, schema: LogEventSchema }, // <-- ЭТО ВАЖНО
+      { name: LogEvent.name, schema: LogEventSchema },
     ]),
   ],
   providers: [LogsService],
   exports: [LogsService],
 })
 export class LogsModule {}
- 

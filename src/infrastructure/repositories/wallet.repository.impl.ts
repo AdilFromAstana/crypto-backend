@@ -43,4 +43,19 @@ export class WalletRepositoryImpl extends WalletRepository {
     });
     return wallets.map(WalletMapper.toDomain);
   }
+
+  async findAllByUserAndToken(
+    userId: string,
+    tokenSymbol: string,
+  ): Promise<WalletEntity[]> {
+    const wallets = await this.repo.find({
+      where: {
+        user: { id: userId },
+        tokenSymbol,
+      },
+      relations: ['user'],
+    });
+
+    return wallets.map(WalletMapper.toDomain);
+  }
 }

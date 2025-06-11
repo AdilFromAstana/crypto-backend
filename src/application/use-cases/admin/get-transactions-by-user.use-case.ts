@@ -11,6 +11,7 @@ export class GetTransactionsByUserUseCase {
     page: number;
     limit: number;
     status?: 'pending' | 'success' | 'failed';
+    order?: 'ASC' | 'DESC';
   }): Promise<{
     items: TransactionEntity[];
     total: number;
@@ -22,6 +23,7 @@ export class GetTransactionsByUserUseCase {
       page: params.page,
       limit: params.limit,
       status: params.status,
+      order: params.order ?? 'DESC',
     });
   }
 }

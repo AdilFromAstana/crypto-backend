@@ -5,23 +5,30 @@ export class WalletMapper {
   static toDomain(record: Wallet): WalletEntity {
     return new WalletEntity(
       record.id,
-      record.user.id,
-      record.address,
-      record.encryptedPrivateKey,
-      record.blockchain,
+      record.userId, // ✅ теперь это корректно
+      record.tokenSymbol,
+      record.type,
+      record.network,
+      record.address ?? null,
+      record.encryptedPrivateKey ?? null,
       Number(record.balance),
       record.lastKnownBalance,
+      record.label,
     );
   }
 
   static toOrm(entity: WalletEntity): Partial<Wallet> {
     return {
       id: entity.id,
+      userId: entity.userId, // ✅ добавляем обратно в ORM
+      tokenSymbol: entity.tokenSymbol,
+      type: entity.type,
+      network: entity.network,
       address: entity.address,
       encryptedPrivateKey: entity.encryptedPrivateKey,
-      blockchain: entity.blockchain,
       balance: entity.balance,
       lastKnownBalance: entity.lastKnownBalance,
+      label: entity.label,
     };
   }
 }

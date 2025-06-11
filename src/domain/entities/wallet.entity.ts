@@ -2,11 +2,14 @@ export class WalletEntity {
   constructor(
     public readonly id: string,
     public readonly userId: string,
-    public readonly address: string,
-    public readonly encryptedPrivateKey: string,
-    public readonly blockchain: string,
+    public readonly tokenSymbol: string, // 'ETH', 'USD'
+    public readonly type: 'crypto' | 'fiat',
+    public readonly network: string | null,
+    public readonly address: string | null,
+    public readonly encryptedPrivateKey: string | null,
     public balance: number,
     public lastKnownBalance: string,
+    public readonly label: string, // ✅ Добавлено
   ) {}
 
   debit(amount: number): void {
