@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,6 +11,10 @@ import { RefreshTokenUseCase } from 'src/application/use-cases/auth/refresh-toke
 import { User } from 'src/infrastructure/entities/user.orm-entity';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategy/jwt.strategy';
+import { EmailService } from 'src/infrastructure/services/email.service';
+import { EmailVerificationRepositoryImpl } from 'src/infrastructure/repositories/email-verification.repository.impl';
+import { SendVerificationCodeUseCase } from 'src/application/use-cases/auth/send-verification-code.use-case';
+import { ConfirmRegistrationUseCase } from 'src/application/use-cases/auth/confirm-registration.use-case';
 
 @Module({
   imports: [
@@ -31,14 +35,21 @@ import { JwtStrategy } from './strategy/jwt.strategy';
   controllers: [AuthController],
   providers: [
     JwtStrategy,
-
+    JwtService,
     LoginUseCase,
     RegisterUseCase,
     RefreshTokenUseCase,
+    EmailService,
+    SendVerificationCodeUseCase,
+    ConfirmRegistrationUseCase,
 
     {
       provide: UserRepository,
       useClass: UserRepositoryImpl,
+    },
+    {
+      provide: EmailVerificationRepositoryImpl,
+      useClass: EmailVerificationRepositoryImpl,
     },
   ],
 })
